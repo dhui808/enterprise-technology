@@ -1,0 +1,11 @@
+Invoke Docker commands from Java:
+  String[] commandAndArgs = new String[]{ "/bin/sh","docker","exec","-it","test_docker","java","-jar","test.jar" };
+  Process process = Runtime.getRuntime().exec(commandAndArgs);
+  InputStream is = process.getInputStream();
+  BufferedReader in = new BufferedReader(new InputStreamReader(is);
+  String line = null;
+  while ((line = in.readLine()) != null) {
+    System.out.println(line);
+  }
+  Thread.sleep(3000);
+  process.destroy();
